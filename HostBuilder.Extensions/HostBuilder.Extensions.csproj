@@ -1,20 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.0</TargetFrameworks>
     <Authors>Will Axtell</Authors>
     <Description>Enables "UseStartup" configuration (i.e. WebHostBuilder)</Description>
     <VersionPrefix>1.0.1</VersionPrefix>
-    <PackageReleaseNotes>1.0.0- Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.0- Initial release
+1.1.0- Support for .net core 3.0 and .net standard 2.0</PackageReleaseNotes>
     <VersionPrefix>1.0.0</VersionPrefix>
     <VersionSuffix>beta-1</VersionSuffix>
     <PackageProjectUrl>https://github.com/waxtell/HostBuilder.Extensions</PackageProjectUrl>
     <RepositoryUrl>https://github.com/waxtell/HostBuilder.Extensions.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>HostBuilder UseStartup</PackageTags>
+    <Version>1.1.0-beta-1</Version>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.0' ">
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.2.0" />
   </ItemGroup>
 
