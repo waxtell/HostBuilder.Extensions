@@ -62,6 +62,16 @@ namespace HostBuilder.Extensions
 
             return this;
         }
+        
+#if !NETSTANDARD2_0
+        public IHostBuilder UseServiceProviderFactory<TContainerBuilder>(Func<HostBuilderContext, IServiceProviderFactory<TContainerBuilder>> factory)
+        {
+            _frontSideBuilder.UseServiceProviderFactory(factory);
+            _backSideBuilder.UseServiceProviderFactory(factory);
+
+            return this;
+        }
+#endif
 
         public IHostBuilder ConfigureContainer<TContainerBuilder>(Action<HostBuilderContext, TContainerBuilder> configureDelegate)
         {
