@@ -55,15 +55,6 @@ namespace HostBuilder.Extensions
             return this;
         }
 
-        public IHostBuilder UseServiceProviderFactory<TContainerBuilder>(IServiceProviderFactory<TContainerBuilder> factory)
-        {
-            _frontSideBuilder.UseServiceProviderFactory(factory);
-            _backSideBuilder.UseServiceProviderFactory(factory);
-
-            return this;
-        }
-        
-#if !NETSTANDARD2_0
         public IHostBuilder UseServiceProviderFactory<TContainerBuilder>(Func<HostBuilderContext, IServiceProviderFactory<TContainerBuilder>> factory)
         {
             _frontSideBuilder.UseServiceProviderFactory(factory);
@@ -71,8 +62,15 @@ namespace HostBuilder.Extensions
 
             return this;
         }
-#endif
 
+        public IHostBuilder UseServiceProviderFactory<TContainerBuilder>(IServiceProviderFactory<TContainerBuilder> factory)
+        {
+            _frontSideBuilder.UseServiceProviderFactory(factory);
+            _backSideBuilder.UseServiceProviderFactory(factory);
+
+            return this;
+        }
+       
         public IHostBuilder ConfigureContainer<TContainerBuilder>(Action<HostBuilderContext, TContainerBuilder> configureDelegate)
         {
             _frontSideBuilder.ConfigureContainer(configureDelegate);

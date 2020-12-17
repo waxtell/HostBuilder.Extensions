@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using HostBuilder.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -9,21 +11,30 @@ namespace SampleApp9000
 {
     public class Program
     {
-        // AppVeyor currently does not provide an environment that supports c# 7.1
-        // This makes main synchronous and me sad.
-        //
-        //public static async Task Main(string[] args)
-        //{
-        //    await
-        //        CreateHostBuilder(args)
-        //            .RunConsoleAsync();
-        //}
-
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateHostBuilder(args)
-                .Build()
-                .StartAsync();
+            await
+                CreateHostBuilder(args)
+                    .UseConsoleLifetime()
+                    .Build()
+                    .OnApplicationStarted(() => Console.WriteLine("Started..."))
+                    .OnApplicationStopping(() => Console.WriteLine("Stopping..."))
+                    .OnApplicationStopped(() => Console.WriteLine("Stopped..."))
+                    .RunAsync()
+
+                    // Or, you could run a simple action/func and exit.  Please note that the OnApplication* callbacks will not be executed when RunAndDone
+                    // methods are utilized.
+                    //
+                    //.RunAndDoneAsync
+                    //(
+                    //    async provider =>
+                    //    {
+                    //        Console.WriteLine("Doing");
+
+                    //        await Task.CompletedTask;
+                    //    }
+                    //)
+                ;
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

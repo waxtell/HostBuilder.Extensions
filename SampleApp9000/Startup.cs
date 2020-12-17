@@ -12,9 +12,9 @@ namespace SampleApp9000
     public class Startup : StartupBase
     {
         public IConfiguration Configuration { get; }
-        public IHostingEnvironment HostEnvironment { get; }
+        public IHostEnvironment HostEnvironment { get; }
 
-        public Startup(IHostingEnvironment hostEnvironment, IConfiguration configuration)
+        public Startup(IHostEnvironment hostEnvironment, IConfiguration configuration)
         {
             // Hosting environment and configuration included here for demonstrative purposes only.
             // Neither parameter is required.
