@@ -1,7 +1,8 @@
 # HostBuilder.Extensions
 I really missed "UseStartup".
 
-[![Build status](https://ci.appveyor.com/api/projects/status/4a3n6j2lj3qxb2wx?svg=true)](https://ci.appveyor.com/project/waxtell/hostbuilder-extensions)
+![Build](https://github.com/waxtell/HostBuilder.Extensions/workflows/Build/badge.svg)
+![Publish to nuget](https://github.com/waxtell/HostBuilder.Extensions/workflows/Publish%20to%20nuget/badge.svg)
 
 ``` csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
