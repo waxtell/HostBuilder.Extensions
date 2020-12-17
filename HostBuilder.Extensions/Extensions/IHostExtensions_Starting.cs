@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.Hosting
         {
             host
                 ?.Services
-                ?.GetService<IApplicationLifetime>()
+                ?.GetService<IHostApplicationLifetime>()
                 ?.ApplicationStarted
                 .Register(onApplicationStarted);
 
@@ -23,7 +23,7 @@ namespace Microsoft.Extensions.Hosting
         {
             ctr = host
                     ?.Services
-                    ?.GetService<IApplicationLifetime>()
+                    ?.GetService<IHostApplicationLifetime>()
                     ?.ApplicationStarted
                     .Register(onApplicationStarted);
 
@@ -34,7 +34,7 @@ namespace Microsoft.Extensions.Hosting
         {
             host
                 ?.Services
-                ?.GetService<IApplicationLifetime>()
+                ?.GetService<IHostApplicationLifetime>()
                 ?.ApplicationStarted
                 .Register(onApplicationStarted, useSynchronizationContext);
 
@@ -45,7 +45,7 @@ namespace Microsoft.Extensions.Hosting
         {
             ctr = host
                     ?.Services
-                    ?.GetService<IApplicationLifetime>()
+                    ?.GetService<IHostApplicationLifetime>()
                     ?.ApplicationStarted
                     .Register(onApplicationStarted, useSynchronizationContext);
 
@@ -56,7 +56,7 @@ namespace Microsoft.Extensions.Hosting
         {
             host
                 ?.Services
-                ?.GetService<IApplicationLifetime>()
+                ?.GetService<IHostApplicationLifetime>()
                 ?.ApplicationStarted
                 .Register(onApplicationStarted, state);
 
@@ -67,7 +67,7 @@ namespace Microsoft.Extensions.Hosting
         {
             ctr = host
                     ?.Services
-                    ?.GetService<IApplicationLifetime>()
+                    ?.GetService<IHostApplicationLifetime>()
                     ?.ApplicationStarted
                     .Register(onApplicationStarted, state);
 
@@ -78,7 +78,7 @@ namespace Microsoft.Extensions.Hosting
         {
             host
                 ?.Services
-                ?.GetService<IApplicationLifetime>()
+                ?.GetService<IHostApplicationLifetime>()
                 ?.ApplicationStarted
                 .Register(onApplicationStarted, state, useSynchronizationContext);
 
@@ -89,7 +89,7 @@ namespace Microsoft.Extensions.Hosting
         {
             ctr = host
                     ?.Services
-                    ?.GetService<IApplicationLifetime>()
+                    ?.GetService<IHostApplicationLifetime>()
                     ?.ApplicationStarted
                     .Register(onApplicationStarted, state, useSynchronizationContext);
 
